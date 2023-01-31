@@ -4,20 +4,23 @@ import SelectTypeForm from "./components/SelectTypeForm";
 import "./styles.css";
 
 export default function App() {
-  const [dataType, setDataType] = useState("people");
+  const [dataType, setDataType] = useState("");
 
   const [data, setData] = useState(null);
 
-  console.log({ data });
+  // console.log({ data });
 
   useEffect(() => {
-    console.log("About to fetch...");
-    fetch(`https://swapi.dev/api/${dataType}/`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setData(data);
-      });
+    // Checks if the dataType is not empty
+    if (dataType) {
+      console.log("About to fetch...");
+      fetch(`https://swapi.dev/api/${dataType}/`)
+        .then((res) => res.json())
+        .then((responseData) => {
+          console.log(responseData);
+          setData(responseData);
+        });
+    }
   }, [dataType]); // If the dataType changes, then this fetch runs again
 
   return (
