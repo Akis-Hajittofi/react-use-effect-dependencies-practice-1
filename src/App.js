@@ -18,7 +18,7 @@ export default function App() {
         console.log(data);
         setData(data);
       });
-  }, []);
+  }, [dataType]); // If the dataType changes, then this fetch runs again
 
   return (
     <div>
