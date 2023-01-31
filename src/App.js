@@ -10,13 +10,15 @@ export default function App() {
 
   console.log({ data });
 
-  console.log("About to fetch...");
-  fetch(`https://swapi.dev/api/${dataType}/`)
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      setData(data);
-    });
+  useEffect(() => {
+    console.log("About to fetch...");
+    fetch(`https://swapi.dev/api/${dataType}/`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setData(data);
+      });
+  }, []);
 
   return (
     <div>
